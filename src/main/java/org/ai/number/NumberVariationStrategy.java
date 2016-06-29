@@ -6,7 +6,7 @@ import java.util.List;
 
 public class NumberVariationStrategy implements ReproductionStrategy<Number> {
     @Override
-    public List<Number> generateOffspring(List<Number> members, int newGenerationSize) {
+    public List<Number> generateOffspring(List<Number> survivors, int newGenerationSize) {
         return null;
     }
 }

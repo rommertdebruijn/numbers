@@ -24,6 +24,7 @@ public class GeneticAlgorithmRunner<T> {
         for (int generationCounter = 0;generationCounter < nrOfGenerations; generationCounter++) {
             List<EvaluatedSpecimen<T>> evaluatedSpecimen = evaluate(generationWithScore);
             List<T> survivors = determineSurvivors(evaluatedSpecimen);
+            System.out.println("generation " + generationCounter + ": " + survivors);
 
             if (generationCounter < nrOfGenerations -1) {
                 // if this is not the last generation, create offspring and repeat
@@ -31,7 +32,7 @@ public class GeneticAlgorithmRunner<T> {
                 generationWithScore = populateEvaluatedList(offspring);
             } else {
                 // else, render the final survivors
-                survivors.forEach(s -> survivors.toString());
+                System.out.println(survivors.toString());
             }
         }
 
