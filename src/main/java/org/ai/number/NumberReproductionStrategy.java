@@ -44,12 +44,9 @@ public class NumberReproductionStrategy implements ReproductionStrategy<NumberSp
         String parentString = parent.getNumberString();
 
         StringBuilder childString = new StringBuilder();
-        for (int pos = 0;pos<NumberSpecimen.WIDTH*NumberSpecimen.HEIGHT;pos++) {
-            if (mutationHappens()) {
-                childString.append(flipChar(parentString.charAt(pos)));
-            } else {
-                childString.append(parentString.charAt(pos));
-            }
+        for (int pos=0; pos < NumberSpecimen.WIDTH * NumberSpecimen.HEIGHT; pos++) {
+            char c = mutationHappens() ? flipChar(parentString.charAt(pos)) : parentString.charAt(pos);
+            childString.append(c);
         }
         return new NumberSpecimen(childString.toString());
     }

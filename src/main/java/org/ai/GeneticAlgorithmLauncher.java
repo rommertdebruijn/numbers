@@ -2,24 +2,26 @@ package org.ai;
 
 import org.ai.engine.EvolutionConfig;
 import org.ai.engine.GeneticAlgorithmRunner;
-import org.ai.number.ExampleNumber;
-import org.ai.number.GibberishNumberGenerator;
-import org.ai.number.LooksLikeNumberEvaluator;
-import org.ai.number.NumberReproductionStrategy;
+import org.ai.number.*;
+
+import java.util.List;
 
 public class GeneticAlgorithmLauncher {
     public static void main( String[] args ) {
-        GeneticAlgorithmRunner runner = new GeneticAlgorithmRunner();
 
-        // this config runs for 1000 generations.
+        // this runs for 100 generations, generating a 1000 children out of the best 10 parents.
         // Fitness is determined by how "close" a number is to the given number.
-        // Reproduction has some random parameters to generate of variation
+        // Reproduction strategy has a parameter to generate mutation
 
-        EvolutionConfig<Integer> evolutionConfig = new EvolutionConfig(1000,
+        int generationSize = 1000;
+        EvolutionConfig<NumberSpecimen> evolutionConfig = new EvolutionConfig<>(
+                generationSize,
                 new LooksLikeNumberEvaluator(ExampleNumber.TWO),
                 new NumberReproductionStrategy(5),
                 new GibberishNumberGenerator());
 
-        runner.generate(100, evolutionConfig);
+        GeneticAlgorithmRunner<NumberSpecimen> runner = new GeneticAlgorithmRunner<>();
+        List<NumberSpecimen> survivors = runner.generate(100, evolutionConfig);
+        System.out.println("Final survors: " + survivors.toString());
     }
 }

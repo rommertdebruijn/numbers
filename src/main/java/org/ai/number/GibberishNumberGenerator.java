@@ -12,16 +12,14 @@ public class GibberishNumberGenerator implements SpecimenGenerator<NumberSpecime
     public NumberSpecimen generateSpecimen() {
 
         StringBuilder specimenString = new StringBuilder();
-        for (int length = 0; length<NumberSpecimen.WIDTH * NumberSpecimen.HEIGHT;length++) {
-            char aChar = getRandomChar();
-            specimenString.append(aChar);
+        for (int length=0; length < NumberSpecimen.WIDTH * NumberSpecimen.HEIGHT; length++) {
+            specimenString.append(getRandomChar());
         }
         return new NumberSpecimen(specimenString.toString());
     }
 
     private char getRandomChar() {
         Random random = new Random();
-        boolean b = random.nextBoolean();
-        return b ? 'X' : ' ';
+        return random.nextBoolean() ? 'X' : ' ';
     }
 }

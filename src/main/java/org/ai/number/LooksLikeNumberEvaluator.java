@@ -23,7 +23,7 @@ public class LooksLikeNumberEvaluator implements FitnessEvaluator<NumberSpecimen
     public int determineFitness(NumberSpecimen specimen) {
         int score = 0;
         String specimenString = specimen.getNumberString();
-        for (int pos = 0; pos < specimenString.length()-1;pos++) {
+        for (int pos=0; pos < specimenString.length()-1; pos++) {
             if (specimenString.charAt(pos) == exampleNumber.getStringRepresentation().charAt(pos)) {
                 score++;
             }
