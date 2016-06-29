@@ -1,8 +1,8 @@
 package org.ai.morehighnumberisbetter;
 
-import org.ai.engine.FitnessStrategy;
+import org.ai.engine.FitnessEvaluator;
 
-public class HighEvenNumberStrategy implements FitnessStrategy<Integer> {
+public class HighEvenNumberEvaluator implements FitnessEvaluator<Integer> {
     @Override
     public int determineFitness(Integer specimen) {
         if (specimen % 2 != 0) {

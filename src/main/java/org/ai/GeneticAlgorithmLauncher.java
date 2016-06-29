@@ -3,8 +3,8 @@ package org.ai;
 import org.ai.engine.EvolutionConfig;
 import org.ai.engine.GeneticAlgorithmRunner;
 import org.ai.morehighnumberisbetter.BetweenZeroAndTwoHundredGenerator;
-import org.ai.morehighnumberisbetter.HighEvenNumberStrategy;
-import org.ai.morehighnumberisbetter.PlusOrMinusTwentyStrategy;
+import org.ai.morehighnumberisbetter.HighEvenNumberEvaluator;
+import org.ai.morehighnumberisbetter.PlusOrMinusTwentyReproductionStrategy;
 
 public class GeneticAlgorithmLauncher {
     public static void main( String[] args ) {
@@ -20,8 +20,8 @@ public class GeneticAlgorithmLauncher {
 //                new NumberGenerator());
 
         EvolutionConfig<Integer> evolutionConfig = new EvolutionConfig(100,
-                new HighEvenNumberStrategy(),
-                new PlusOrMinusTwentyStrategy(),
+                new HighEvenNumberEvaluator(),
+                new PlusOrMinusTwentyReproductionStrategy(),
                 new BetweenZeroAndTwoHundredGenerator());
 
         runner.generate(100, evolutionConfig);

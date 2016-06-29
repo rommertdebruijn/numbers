@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class PlusOrMinusTwentyStrategy implements ReproductionStrategy<Integer> {
+public class PlusOrMinusTwentyReproductionStrategy implements ReproductionStrategy<Integer> {
     @Override
     public List<Integer> generateOffspring(List<Integer> survivors, int newGenerationSize) {
         List<Integer> offspring = new ArrayList<>();

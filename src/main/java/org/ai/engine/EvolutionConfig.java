@@ -2,7 +2,7 @@ package org.ai.engine;
 
 public class EvolutionConfig<T> {
     private final int generationSize;
-    private final FitnessStrategy<T> fitnessStrategy;
+    private final FitnessEvaluator<T> fitnessEvaluator;
     private final ReproductionStrategy<T> reproductionStrategy;
     private SpecimenGenerator<T> specimenGenerator;
 
@@ -11,16 +11,16 @@ public class EvolutionConfig<T> {
      * and strategies for a) determining the fitness of a specimen, and b) determining how
      * a new generation is generated from a small number of "survivor" specimen
      * @param generationSize the nr of specimen in a generation
-     * @param fitnessStrategy used to determine the fitness of specimens
+     * @param fitnessEvaluator used to determine the fitness of specimens
      * @param reproductionStrategy used to generate new generation from surviving specimens
      * @param specimenGenerator used to generate first generation
      */
     public EvolutionConfig(int generationSize,
-                           FitnessStrategy<T> fitnessStrategy,
+                           FitnessEvaluator<T> fitnessEvaluator,
                            ReproductionStrategy<T> reproductionStrategy,
                            SpecimenGenerator<T> specimenGenerator) {
         this.generationSize = generationSize;
-        this.fitnessStrategy = fitnessStrategy;
+        this.fitnessEvaluator = fitnessEvaluator;
         this.reproductionStrategy = reproductionStrategy;
         this.specimenGenerator = specimenGenerator;
     }
@@ -29,8 +29,8 @@ public class EvolutionConfig<T> {
         return generationSize;
     }
 
-    public FitnessStrategy<T> getFitnessStrategy() {
-        return fitnessStrategy;
+    public FitnessEvaluator<T> getFitnessEvaluator() {
+        return fitnessEvaluator;
     }
 
     public ReproductionStrategy<T> getReproductionStrategy() {

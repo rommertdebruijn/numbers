@@ -1,6 +1,6 @@
 package org.ai.engine;
 
-public interface FitnessStrategy<T> {
+public interface FitnessEvaluator<T> {
 
     int determineFitness(T specimen);
 }
