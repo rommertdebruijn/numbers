@@ -1,4 +1,4 @@
-package org.ai.number.rommert;
+package org.ai.number;
 
 import org.ai.engine.ReproductionStrategy;
 
@@ -9,12 +9,21 @@ import java.util.Random;
 
 public class NumberReproductionStrategy implements ReproductionStrategy<NumberSpecimen> {
 
-    private int changePercentageChance;
+    private int mutationChance;
 
-    public NumberReproductionStrategy(int changePercentageChance) {
-        this.changePercentageChance = changePercentageChance;
+    /**
+     * @param mutationChance defines the chance that a mutation occurs
+     */
+    public NumberReproductionStrategy(int mutationChance) {
+        this.mutationChance = mutationChance;
     }
 
+    /**
+     * Generates a new generation
+     * @param survivors
+     * @param newGenerationSize
+     * @return a new generation of NumberSpecimens
+     */
     @Override
     public List<NumberSpecimen> generateOffspring(List<NumberSpecimen> survivors, int newGenerationSize) {
         List<NumberSpecimen> offspring = new ArrayList<>();
@@ -26,6 +35,11 @@ public class NumberReproductionStrategy implements ReproductionStrategy<NumberSp
         return offspring;
     }
 
+    /**
+     * Given a parent, generates a child that is similar to the parent
+     * @param parent
+     * @return the child
+     */
     private NumberSpecimen generateChild(NumberSpecimen parent) {
         String parentString = parent.getNumberString();
 
@@ -43,7 +57,7 @@ public class NumberReproductionStrategy implements ReproductionStrategy<NumberSp
     private boolean mutationHappens() {
         Random random = new Random();
         int value = random.nextInt(100);
-        return value < changePercentageChance;
+        return value < mutationChance;
     }
 
     private NumberSpecimen getRandomParent(List<NumberSpecimen> survivors) {

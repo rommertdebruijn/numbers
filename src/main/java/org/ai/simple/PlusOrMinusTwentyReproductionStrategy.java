@@ -1,4 +1,4 @@
-package org.ai.morehighnumberisbetter;
+package org.ai.simple;
 
 import org.ai.engine.ReproductionStrategy;
 
@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Randomly generates numbers that are at most 20 higher or lower then one of the parents
+ */
 public class PlusOrMinusTwentyReproductionStrategy implements ReproductionStrategy<Integer> {
     @Override
     public List<Integer> generateOffspring(List<Integer> survivors, int newGenerationSize) {

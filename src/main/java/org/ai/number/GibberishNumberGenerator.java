@@ -1,12 +1,16 @@
-package org.ai.number.rommert;
+package org.ai.number;
 
 import org.ai.engine.SpecimenGenerator;
 
 import java.util.Random;
 
+/**
+ * Generates random numbers out of 'X' and ' '
+ */
 public class GibberishNumberGenerator implements SpecimenGenerator<NumberSpecimen> {
     @Override
     public NumberSpecimen generateSpecimen() {
+
         StringBuilder specimenString = new StringBuilder();
         for (int length = 0; length<NumberSpecimen.WIDTH * NumberSpecimen.HEIGHT;length++) {
             char aChar = getRandomChar();

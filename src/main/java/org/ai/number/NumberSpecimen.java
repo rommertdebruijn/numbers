@@ -1,4 +1,4 @@
-package org.ai.number.rommert;
+package org.ai.number;
 
 public class NumberSpecimen {
     public static final int WIDTH = 8;
@@ -18,11 +18,12 @@ public class NumberSpecimen {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("\n");
         for (int height = 0;height<9;height++) {
             sb.append(numberString.substring(height*8, (height*WIDTH) + WIDTH))
             .append("\n");
         }
+        sb.append("\n");
         return sb.toString();
     }
 }

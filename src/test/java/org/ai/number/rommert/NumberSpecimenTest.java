@@ -1,6 +1,6 @@
 package org.ai.number.rommert;
 
-import junit.framework.TestCase;
+import org.ai.number.NumberSpecimen;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

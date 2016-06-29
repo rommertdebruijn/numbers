@@ -1,7 +1,6 @@
-package org.ai.number.rommert;
+package org.ai.number;
 
 import org.ai.engine.FitnessEvaluator;
-import org.ai.number.ExampleNumber;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,22 +8,23 @@ import java.util.Arrays;
 public class LooksLikeNumberEvaluator implements FitnessEvaluator<NumberSpecimen> {
 
 
-    private String exampleNumberString;
+    private ExampleNumber exampleNumber;
 
     public LooksLikeNumberEvaluator(ExampleNumber exampleNumber) {
-        // concat the string representation of the example number to 1 long string
-        String[] representation = exampleNumber.getStringRepresentation();
-        StringBuilder sb = new StringBuilder();
-        new ArrayList<>(Arrays.asList(representation)).forEach(sb::append);
-        exampleNumberString = sb.toString(); // store it for future comparison
+        this.exampleNumber = exampleNumber;
     }
 
+    /**
+     * Compares the string of the specimen with the string of the example
+     * @param specimen
+     * @return a score, higher if the specimen was more similar to the example
+     */
     @Override
     public int determineFitness(NumberSpecimen specimen) {
         int score = 0;
         String specimenString = specimen.getNumberString();
         for (int pos = 0; pos < specimenString.length()-1;pos++) {
-            if (specimenString.charAt(pos) == exampleNumberString.charAt(pos)) {
+            if (specimenString.charAt(pos) == exampleNumber.getStringRepresentation().charAt(pos)) {
                 score++;
             }
         }
