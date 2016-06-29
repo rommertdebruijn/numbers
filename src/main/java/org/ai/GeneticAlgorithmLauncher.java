@@ -2,9 +2,10 @@ package org.ai;
 
 import org.ai.engine.EvolutionConfig;
 import org.ai.engine.GeneticAlgorithmRunner;
-import org.ai.morehighnumberisbetter.BetweenZeroAndTwoHundredGenerator;
-import org.ai.morehighnumberisbetter.HighEvenNumberEvaluator;
-import org.ai.morehighnumberisbetter.PlusOrMinusTwentyReproductionStrategy;
+import org.ai.number.ExampleNumber;
+import org.ai.number.rommert.GibberishNumberGenerator;
+import org.ai.number.rommert.LooksLikeNumberEvaluator;
+import org.ai.number.rommert.NumberReproductionStrategy;
 
 public class GeneticAlgorithmLauncher {
     public static void main( String[] args ) {
@@ -14,15 +15,10 @@ public class GeneticAlgorithmLauncher {
         // Fitness is determined by how "close" a number is to the number ONE.
         // Reproduction has some random parameters to generate lots of variation
 
-//        EvolutionConfig<Number> evolutionConfig = new EvolutionConfig(100,
-//                new LikeNumberStrategy(ExampleNumber.ONE),
-//                new NumberVariationStrategy(),
-//                new NumberGenerator());
-
         EvolutionConfig<Integer> evolutionConfig = new EvolutionConfig(100,
-                new HighEvenNumberEvaluator(),
-                new PlusOrMinusTwentyReproductionStrategy(),
-                new BetweenZeroAndTwoHundredGenerator());
+                new LooksLikeNumberEvaluator(ExampleNumber.ONE),
+                new NumberReproductionStrategy(5),
+                new GibberishNumberGenerator());
 
         runner.generate(100, evolutionConfig);
     }
