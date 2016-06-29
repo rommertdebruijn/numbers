@@ -27,8 +27,8 @@ public class GeneticAlgorithmRunner<T> {
 
             if (generationCounter < nrOfGenerations -1) {
                 // if this is not the last generation, create offspring and repeat
-                List<T> newGeneration = evolutionConfig.getReproductionStrategy().nextGeneration(survivors, evolutionConfig.getGenerationSize());
-                generationWithScore = populateEvaluatedList(newGeneration);
+                List<T> offspring = evolutionConfig.getReproductionStrategy().generateOffspring(survivors, evolutionConfig.getGenerationSize());
+                generationWithScore = populateEvaluatedList(offspring);
             } else {
                 // else, render the final survivors
                 survivors.forEach(s -> survivors.toString());
