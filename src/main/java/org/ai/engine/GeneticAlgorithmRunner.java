@@ -25,11 +25,12 @@ public class GeneticAlgorithmRunner<T> {
             List<EvaluatedSpecimen<T>> evaluatedSpecimen = evaluate(generationWithScore);
             List<T> survivors = determineSurvivors(evaluatedSpecimen);
 
-            // if this is not the last generation, create offspring and repeat
             if (generationCounter < nrOfGenerations -1) {
+                // if this is not the last generation, create offspring and repeat
                 List<T> newGeneration = evolutionConfig.getReproductionStrategy().nextGeneration(survivors, evolutionConfig.getGenerationSize());
                 generationWithScore = populateEvaluatedList(newGeneration);
             } else {
+                // else, render the final survivors
                 survivors.forEach(s -> survivors.toString());
             }
         }
@@ -37,7 +38,7 @@ public class GeneticAlgorithmRunner<T> {
     }
 
     private List<T> determineSurvivors(List<EvaluatedSpecimen<T>> evaluatedSpecimen) {
-        return (List<T>) evaluatedSpecimen.stream().sorted(SORT_BY_SCORE_DESC)
+        return evaluatedSpecimen.stream().sorted(SORT_BY_SCORE_DESC)
                         .map(EvaluatedSpecimen::getSpecimen)
                         .limit(10)
                         .collect(Collectors.toList());
